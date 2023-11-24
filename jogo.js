@@ -112,13 +112,13 @@ function criaMedalha(){
         x: 73,
         y: 135,
         atualiza() {
-            if (globais.placar.pontuacao >= 20) {
+            if (globais.placar.pontuacao >= 60) {
                 medalha.spriteX = 0;
                 medalha.spriteY = 124;
-            } else if (globais.placar.pontuacao >= 15) {
+            } else if (globais.placar.pontuacao >= 40) {
                 medalha.spriteX = 48;
                 medalha.spriteY = 124;
-            } else if (globais.placar.pontuacao >= 10) {
+            } else if (globais.placar.pontuacao >= 20) {
                 medalha.spriteX = 48;
                 medalha.spriteY = 78;
             } else if (globais.placar.pontuacao >= 5) {
@@ -300,11 +300,14 @@ function criaCanos(){
             spriteX: 52,
             spriteY: 169,
         },
-        espaco: 80,
+        espaco: 120,
         desenha(){
             canos.pares.forEach(function(par){
                 const yRandom = par.y;
-                const espacamentoEntreCanos = 90;
+                const espacamentoInicial = canos.espaco;
+                const espacamentoEntreCanos =
+                    espacamentoInicial - calcularAjusteDeEspacamento(globais.placar.pontuacao);
+                const espacamentoFinal = Math.max(60, espacamentoEntreCanos);
                 const canoCeuX = par.x;
                 const canoCeuY = yRandom;
             
@@ -381,7 +384,18 @@ function criaCanos(){
         }   
     }
     return canos;
-}
+};
+
+function calcularAjusteDeEspacamento(pontuacao) {
+    if (pontuacao >= 60) {
+        return 20;  
+    } else if (pontuacao >= 40) {
+        return 10; 
+    } else {
+        return 0;  
+    }
+};
+
 const pontuacaoMaxima = {
     maior: 0,
 };
