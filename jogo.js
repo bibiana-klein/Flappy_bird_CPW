@@ -288,6 +288,40 @@ const mensagemGameOver = {
         );
     },
 }
+const tap = {
+    sX: 162,
+    sY: 118,
+    w: 43,
+    h: 18,
+    x: 50,
+    y: 220,
+    desenha(){
+        contexto.drawImage(
+            frame4,
+            tap.sX,tap.sY, // sprite x e sprite y
+            tap.w,tap.h, //tamanho do recorte na sprite
+            tap.x,tap.y, // localização dentro do jogo 
+            tap.w,tap.h, // tamanho dentro do jogo
+        );
+    },
+}
+const tap2 = {
+    sX: 237,
+    sY: 118,
+    w: 42,
+    h: 18,
+    x: 223,
+    y: 220,
+    desenha(){
+        contexto.drawImage(
+            frame4,
+            tap2.sX,tap2.sY, // sprite x e sprite y
+            tap2.w,tap2.h, //tamanho do recorte na sprite
+            tap2.x,tap2.y, // localização dentro do jogo 
+            tap2.w,tap2.h, // tamanho dentro do jogo
+        );
+    },
+}
 function criaCanos(){
     const canos = {
         largura: 52,
@@ -472,6 +506,8 @@ const telas = {
             globais.personagemAtivo.desenha();
             globais.chao.desenha();
             mensagemGetReady.desenha();
+            tap.desenha();
+            tap2.desenha();
             flappyBirdTelainicial.desenha();
             flappyBirdTelainicial2.desenha();
         },
